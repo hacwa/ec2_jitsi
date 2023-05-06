@@ -7,10 +7,10 @@ data "aws_ami" "server_ami" {
   }
 }
 resource "aws_instance" "jitsi_node" {
-  instance_type = "t3.micro"
-  ami           = data.aws_ami.server_ami.id
-  iam_instance_profile = "${aws_iam_instance_profile.ec2_access_role.name}"
-  user_data = <<-EOF
+  instance_type        = "t3.micro"
+  ami                  = data.aws_ami.server_ami.id
+  iam_instance_profile = aws_iam_instance_profile.ec2_access_role.name
+  user_data            = <<-EOF
 sudo apt-get update
 sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common unzip
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -31,10 +31,10 @@ EOF
   network_interface {
     network_interface_id = aws_network_interface.jitsi_network_interface.id
     device_index         = 0
-  }  
+  }
   root_block_device {
     volume_size = 10
- }
+  }
 }
 resource "aws_eip" "ip" {
   instance = aws_instance.jitsi_node.id

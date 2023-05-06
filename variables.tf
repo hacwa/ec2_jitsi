@@ -1,5 +1,5 @@
 
 variable "az" {
-    type = string
-    default = "eu-west-2"
-    }
+  type    = string
+  default = "eu-west-2"
+}

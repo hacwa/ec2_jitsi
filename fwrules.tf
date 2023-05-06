@@ -1,6 +1,6 @@
 resource "aws_security_group" "jitsi_sg" {
   name   = "Jitsi-SG"
-  vpc_id = "${aws_vpc.jitsi_vpc.id}"
+  vpc_id = aws_vpc.jitsi_vpc.id
 
   ingress {
     from_port   = 80
@@ -19,7 +19,7 @@ resource "aws_security_group" "jitsi_sg" {
     to_port     = 4443
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
-  }  
+  }
   ingress {
     from_port   = 10000
     to_port     = 10000
