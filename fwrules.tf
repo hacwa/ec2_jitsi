@@ -1,5 +1,5 @@
 resource "aws_security_group" "jitsi_sg" {
-  name   = "HTTP and SSH"
+  name   = "Jitsi-SG"
   vpc_id = "${aws_vpc.jitsi_vpc.id}"
 
   ingress {
@@ -40,3 +40,5 @@ resource "aws_security_group" "jitsi_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
+

@@ -5,7 +5,7 @@ resource "aws_vpc" "jitsi_vpc" {
 resource "aws_subnet" "jitsi_public_subnet" {
   vpc_id            = "${aws_vpc.jitsi_vpc.id}"
   cidr_block        = "10.0.1.0/24"
-  availability_zone = "us-west-2a"
+  availability_zone = "${var.az}a"
 
   tags = {
     Name = "Public Subnet"
@@ -15,6 +15,10 @@ resource "aws_network_interface" "jitsi_network_interface" {
   subnet_id   = aws_subnet.jitsi_public_subnet.id
   private_ips = ["10.0.1.10"]
 }
+
+
+
+
 
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.jitsi_vpc.id
