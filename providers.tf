@@ -5,9 +5,11 @@ terraform {
       version = "4.65.0"
     }
   }
-  backend "s3" {
-
-  }
+  backend "s3"{
+      region = "us-east-2"
+      bucket = "oidc-jitsi"
+      key = "jitsi.tfstate"
+      }
 }
 
 provider "aws" {

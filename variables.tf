@@ -1,5 +1,4 @@
-
-variable "az" {
-  type    = string
-  default = "eu-west-2"
+variable "s3bucket" {
+type = string
+default = "oidc-jitsi"
 }

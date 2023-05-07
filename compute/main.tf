@@ -29,7 +29,7 @@ sudo unzip stable-8615.zip
 sudo cd docker-jitsi-meet-stable-8615/
 EOF
   network_interface {
-    network_interface_id = aws_network_interface.jitsi_network_interface.id
+    network_interface_id = module.network.networkinterface
     device_index         = 0
   }
   root_block_device {
