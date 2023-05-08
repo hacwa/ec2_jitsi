@@ -1,4 +1,7 @@
-variable "s3bucket" {
-type = string
-default = "oidc-jitsi"
+
+variable "az" {
+  type    = string
+  default = "eu-west-2"
 }
+
+

@@ -1,3 +1,6 @@
+
+
+
 data "aws_ami" "server_ami" {
   most_recent = true
   owners      = ["099720109477"]
@@ -9,7 +12,9 @@ data "aws_ami" "server_ami" {
 resource "aws_instance" "jitsi_node" {
   instance_type        = "t3.micro"
   ami                  = data.aws_ami.server_ami.id
-  iam_instance_profile = aws_iam_instance_profile.ec2_access_role.name
+  iam_instance_profile = module.iamrole.ec2_jitsi_instance_profile
+#  iam_instance_profile = aws_iam_instance_profile.ec2_access_role.name
+
   user_data            = <<-EOF
 sudo apt-get update
 sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common unzip
@@ -29,7 +34,7 @@ sudo unzip stable-8615.zip
 sudo cd docker-jitsi-meet-stable-8615/
 EOF
   network_interface {
-    network_interface_id = module.network.networkinterface
+#    network_interface_id = module.network.networkinterface
     device_index         = 0
   }
   root_block_device {
