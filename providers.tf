@@ -11,7 +11,6 @@ terraform {
       key = "jitsi.tfstate"
       }
 }
-
 provider "aws" {
   region = "eu-west-2"
 }
