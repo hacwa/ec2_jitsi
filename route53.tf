@@ -12,9 +12,9 @@
 #  }
 #}
 
-#resource "aws_route53_zone" "primary" {
-#  name = var.hacwa_com
-#}
+resource "aws_route53_zone" "primary" {
+  name = var.hacwa_com
+}
 
 
 
